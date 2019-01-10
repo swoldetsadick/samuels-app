@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* By Tag */
+body {
+  background-color: ghostwhite;
+}
+/* By ID */
+#footer-logo {
+  width: 1%;
+}
