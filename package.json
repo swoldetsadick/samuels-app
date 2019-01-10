@@ -2,12 +2,12 @@
   "name": "samuels-app",
   "version": "0.0.0",
   "scripts": {
+    "e2e": "ng e2e",
+    "build": "ng build",
+    "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 3000",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -21,14 +21,16 @@
     "@angular/router": "~7.1.0",
     "core-js": "^2.5.4",
     "d3": "5.4.0",
+    "lodash": "^4.17.10",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular-devkit/build-angular": "^0.12.1",
     "@angular/cli": "~7.1.4",
     "@angular/compiler-cli": "~7.1.0",
+    "@angular/language-service": "~7.1.0",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
     "@types/d3-brush": "1.0.8",
@@ -39,10 +41,10 @@
     "@types/d3-shape": "1.2.3",
     "@types/d3-time-format": "2.1.0",
     "@types/d3-zoom": "1.7.1",
-    "@angular/language-service": "~7.1.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/lodash": "^4.14.108",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
