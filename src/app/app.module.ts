@@ -10,8 +10,9 @@ import { SpeechReconService } from './shared-services/speech-recon.service';
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+
   ],
   providers: [
     SpeechReconService,
