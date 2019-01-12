@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import * as d3 from 'd3';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { SpeechReconService } from './shared-services/speech-recon.service';
+import { SpeechDataService } from './shared-services/speechData/speech-data.service';
+import { SpeechReconService } from './shared-services/speechRecon/speech-recon.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
   // Un-mutable variables
   languages = [
@@ -26,20 +26,16 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
 
   // Mutable variables
   iterator: number;
-  showSearchButton: boolean;
   selectedLanguage: string;
   speechData: string;
   title: string;
 
-  constructor(private speechReconService: SpeechReconService) {
+  constructor(private speechReconService: SpeechReconService, private speechDataService: SpeechDataService) {
     this.iterator = 1;
     this.selectedLanguage = this.languages[this.iterator].lang;
     this.speechData = '';
     this.title = this.titles[this.iterator].text;
-  }
-
-  ngAfterViewInit() {
-    d3.select('p').style('background-color', 'yellow');
+    this.speechDataService.changeMessage([this.languages[this.iterator].lang, this.speechData]);
   }
 
   ngOnDestroy() {
@@ -48,15 +44,19 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
 
   ngOnInit() {
     this.activateSpeechSearchMovie();
+    this.speechDataService.currentMessage.subscribe( ( message ) => {
+      this.selectedLanguage = message[0];
+      this.speechData = message[1];
+    });
   }
 
   public activateSpeechSearchMovie(): void {
-    this.showSearchButton = false;
     this.speechReconService.record(this.selectedLanguage)
       .subscribe(
         //listener
         (value) => {
           this.speechData = value;
+          this.speechDataService.changeMessage([this.languages[this.iterator].lang, this.speechData]);
           console.log(value);
         },
         //error
@@ -69,7 +69,6 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
         },
         //completion
         () => {
-          this.showSearchButton = true;
           console.log("--complete--");
           this.activateSpeechSearchMovie();
         });
@@ -84,7 +83,12 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     this.title = this.titles[this.iterator].text;
     this.selectedLanguage = this.languages[this.iterator].lang;
     this.speechReconService.destroySpeechObject();
+    this.changeMessage();
     this.activateSpeechSearchMovie();
+  }
+
+  public changeMessage() {
+    this.speechDataService.changeMessage([this.languages[this.iterator].lang, this.speechData]);
   }
 
 }

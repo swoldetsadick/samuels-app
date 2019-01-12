@@ -6,8 +6,10 @@ import { MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, M
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SpeechReconService } from './shared-services/speech-recon.service';
 import { LandingComponent } from './landing/landing.component';
+import { SpeechDataService } from './shared-services/speechData/speech-data.service';
+import { SpeechReconService } from './shared-services/speechRecon/speech-recon.service';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { LandingComponent } from './landing/landing.component';
 
   ],
   providers: [
+    SpeechDataService,
     SpeechReconService,
   ],
   bootstrap: [ AppComponent ]
