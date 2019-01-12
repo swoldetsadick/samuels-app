@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SpeechDataService {
 
-  private messageSource = new BehaviorSubject<Array>([]);
+  private messageSource = new BehaviorSubject<Array<string>>([]);
   currentMessage = this.messageSource.asObservable();
 
   constructor() { }
 
-  public changeMessage(message: Array) {
+  public changeMessage(message: Array<string>) {
     this.messageSource.next(message);
   }
 
