@@ -1,44 +1,32 @@
-/* By class */
-.icon {
-  float: right;
+@font-face {
+  font-family: gwibble;
+  src: url(../assets/fonts/GWIBBLE_.TTF) format("opentype");
 }
-.navigation-toolbar {
-  background-color: rgba(4, 71, 254, .25);
-}
-.right {
-  left: 93%;
-}
-
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border: 1px solid silver;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-}
-.flex-item {
-  background: tomato;
-  padding: 5px;
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-
-  line-height: 100px;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
+/* By tag */
+footer {
+  height: 1%;
   text-align: center;
 }
-.wrap    {
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
+
+/* By class */
+.navigation-toolbar {
+  background-color: rgba(4, 71, 254, .25);
+  height: 7%;
 }
-.wrap li {
-  background: gold;
+
+.main {
+  height: 90%;
+  overflow: hidden;
+}
+
+.right {
+  left: 59%;
+}
+.title {
+  font-size: 2vw;
+  font-family: 'gwibble', 'arial', sans-serif;
+}
+/* By ID */
+#footer-logo {
+  width: 1%;
 }

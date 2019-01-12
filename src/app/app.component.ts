@@ -38,7 +38,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('hello')
+    this.activateSpeechSearchMovie();
   }
 
   public activateSpeechSearchMovie(): void {
@@ -54,7 +54,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
         (err) => {
           console.log(err);
           if (err.error == "no-speech") {
-            console.log("--restatring service--");
+            console.log("--restarting service--");
             this.activateSpeechSearchMovie();
           }
         },

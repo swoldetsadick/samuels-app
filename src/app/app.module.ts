@@ -1,15 +1,18 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule,
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpeechReconService } from './shared-services/speech-recon.service';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent
   ],
   imports: [
     AppRoutingModule,
@@ -26,6 +29,6 @@ import { SpeechReconService } from './shared-services/speech-recon.service';
   providers: [
     SpeechReconService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
