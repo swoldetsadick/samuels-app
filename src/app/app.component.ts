@@ -10,23 +10,32 @@ import { SpeechReconService } from './shared-services/speech-recon.service';
 })
 export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
 
-  iterator: number = 0;
+  // Un-mutable variables
   languages = [
     {lang: 'en-GB', langName: 'English', flag: '../assets/images/uk.png'},
     {lang: 'fr-FR', langName: 'Français', flag: '../assets/images/france.png'},
     {lang: 'de-DE', langName: 'Deutsch', flag: '../assets/images/germany.png'},
     {lang: 'am-ET', langName: 'አማርኛ', flag: '../assets/images/ethiopia.png'}
   ];
+  titles = [
+    {text: 'Samuel´s Educational Application'},
+    {text: 'L´Application Educative de Samuel'},
+    {text: 'Samuel´s Bildungsapplikation'},
+    {text: 'የሳሙኤል፡መማርያ፡አፕሊኬሽን፡፡'},
+  ];
+
+  // Mutable variables
+  iterator: number;
   showSearchButton: boolean;
   selectedLanguage: string;
   speechData: string;
   title: string;
 
   constructor(private speechReconService: SpeechReconService) {
-    this.showSearchButton = true;
-    this.selectedLanguage = 'en-us';
+    this.iterator = 1;
+    this.selectedLanguage = this.languages[this.iterator].lang;
     this.speechData = '';
-    this.title = "Sam's Learning Web-Application";
+    this.title = this.titles[this.iterator].text;
   }
 
   ngAfterViewInit() {
@@ -72,6 +81,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     } else {
       this.iterator += 1;
     }
+    this.title = this.titles[this.iterator].text;
     this.selectedLanguage = this.languages[this.iterator].lang;
     this.speechReconService.destroySpeechObject();
     this.activateSpeechSearchMovie();

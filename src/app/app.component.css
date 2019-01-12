@@ -18,9 +18,17 @@ footer {
   height: 90%;
   overflow: hidden;
 }
-
-.right {
+.rightam {
+  left: 71%;
+}
+.rightde {
   left: 59%;
+}
+.righten {
+  left: 54.2%;
+}
+.rightfr {
+  left: 53.6%;
 }
 .title {
   font-size: 2vw;
