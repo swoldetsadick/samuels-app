@@ -7,6 +7,9 @@ import { MatButtonModule, MatButtonToggleModule, MatCardModule, MatIconModule, M
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
+import { LettersComponent } from './letters/letters.component';
+import { NumbersComponent } from './numbers/numbers.component';
+import { PlanetsComponent } from './planets/planets.component';
 import { SpeechDataService } from './shared-services/speechData/speech-data.service';
 import { SpeechReconService } from './shared-services/speechRecon/speech-recon.service';
 
@@ -14,7 +17,10 @@ import { SpeechReconService } from './shared-services/speechRecon/speech-recon.s
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
+    LettersComponent,
+    NumbersComponent,
+    PlanetsComponent
   ],
   imports: [
     AppRoutingModule,

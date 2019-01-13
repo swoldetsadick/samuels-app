@@ -1,4 +1,7 @@
 /* By class */
+.active {
+  border-color: blue;
+}
 .flex-container {
   -ms-box-orient: horizontal;
 
@@ -36,7 +39,7 @@
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-
+/* By ID */
 #planets {
   background-image: url(https://raw.githubusercontent.com/swoldetsadick/samuels-app/master/src/assets/images/solar-system.png);
   background-size: cover;
