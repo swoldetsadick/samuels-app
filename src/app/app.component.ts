@@ -78,7 +78,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public changeLanguage() {
-    if (this.iterator === this.languages.length) {
+    if (this.iterator === (this.languages.length - 1)) {
       this.iterator = 0;
     } else {
       this.iterator += 1;
