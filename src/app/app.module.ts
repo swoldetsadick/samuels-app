@@ -12,7 +12,7 @@ import { NumbersComponent } from './numbers/numbers.component';
 import { PlanetsComponent } from './planets/planets.component';
 import { SpeechDataService } from './shared-services/speechData/speech-data.service';
 import { SpeechReconService } from './shared-services/speechRecon/speech-recon.service';
-
+import { Text2SpeechService } from './shared-services/text2Speech/text2-speech.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { SpeechReconService } from './shared-services/speechRecon/speech-recon.s
   providers: [
     SpeechDataService,
     SpeechReconService,
+    Text2SpeechService,
   ],
   bootstrap: [ AppComponent ]
 })

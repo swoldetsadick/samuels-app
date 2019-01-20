@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { SpeechDataService } from './shared-services/speechData/speech-data.service';
 import { SpeechReconService } from './shared-services/speechRecon/speech-recon.service';
+import { Text2SpeechService } from './shared-services/text2Speech/text2-speech.service';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ export class AppComponent implements OnInit, OnDestroy {
   speechData: string;
   title: string;
 
-  constructor(private speechReconService: SpeechReconService, private speechDataService: SpeechDataService) {
+  constructor(private speechReconService: SpeechReconService, private speechDataService: SpeechDataService,
+              private text2SpeechService: Text2SpeechService) {
     this.iterator = 1;
     this.selectedLanguage = this.languages[this.iterator].lang;
     this.speechData = '';
@@ -53,29 +55,30 @@ export class AppComponent implements OnInit, OnDestroy {
   public activateSpeechSearchMovie(): void {
     this.speechReconService.record(this.selectedLanguage)
       .subscribe(
-        //listener
         (value) => {
           this.speechData = value;
           this.speechDataService.changeMessage([this.languages[this.iterator].lang, this.speechData]);
-          console.log(value);
-        },
-        //error
-        (err) => {
-          console.log(err);
-          if (err.error == "no-speech") {
-            console.log("--restarting service--");
-            this.activateSpeechSearchMovie();
-          }
-        },
-        //completion
-        () => {
-          console.log("--complete--");
-          this.activateSpeechSearchMovie();
-        });
+          setTimeout(()=>{ this.speechData = '' }, 4000);
+        }, (err) => { if (err.error == "no-speech") { this.activateSpeechSearchMovie(); }
+        }, () => { this.activateSpeechSearchMovie();});
+  }
+
+  public announceSelectedLanguague() {
+    var message = '';
+    if (this.selectedLanguage === 'am-ET') {
+      message = 'ቋንቋ:ምርጫ:: አማረኛ';
+    } else if (this.selectedLanguage === 'de-DE') {
+      message = 'Sprachauswahl, Deutsch.';
+    } else if (this.selectedLanguage === 'en-GB') {
+      message = 'Selected Language, English.';
+    } else {
+      message = 'Langue sélectionnée, Français.';
+    }
+    this.text2SpeechService.speak(message, this.selectedLanguage);
   }
 
   public changeLanguage() {
-    if (this.iterator === 3) {
+    if (this.iterator === this.languages.length) {
       this.iterator = 0;
     } else {
       this.iterator += 1;
@@ -84,6 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.selectedLanguage = this.languages[this.iterator].lang;
     this.speechReconService.destroySpeechObject();
     this.changeMessage();
+    this.announceSelectedLanguague();
     this.activateSpeechSearchMovie();
   }
 

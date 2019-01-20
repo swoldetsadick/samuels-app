@@ -10,6 +10,7 @@ interface IWindow extends Window {
 @Injectable({
   providedIn: 'root'
 })
+
 export class SpeechReconService {
 
   speechRecognition: any;
@@ -25,7 +26,9 @@ export class SpeechReconService {
   record(lang: string): Observable<string> {
 
     return Observable.create(observer => {
+
       const { webkitSpeechRecognition }: IWindow = <IWindow>window;
+
       this.speechRecognition = new webkitSpeechRecognition();
       this.speechRecognition.continuous = true;
       this.speechRecognition.lang = lang;
@@ -33,10 +36,10 @@ export class SpeechReconService {
 
       this.speechRecognition.onresult = speech => {
         let term: string = '';
-        console.log(speech);
         if (speech.results) {
           let result = speech.results[speech.resultIndex];
           let transcript = result[0].transcript;
+          console.log(transcript);
           if (result.isFinal) {
             if (result[0].confidence < 0.3) {
               console.log('Unrecognized result - Please try again');

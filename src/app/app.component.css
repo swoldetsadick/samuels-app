@@ -2,6 +2,7 @@
   font-family: gwibble;
   src: url(../assets/fonts/GWIBBLE_.TTF) format("opentype");
 }
+
 /* By tag */
 footer {
   height: 1%;
@@ -9,27 +10,45 @@ footer {
 }
 
 /* By class */
+.ear {
+  fill: black;
+  opacity: 1;
+}
+
+.icon {
+  width: 3%;
+}
+
 .navigation-toolbar {
   background-color: rgba(4, 71, 254, .25);
   height: 7%;
 }
 
 .main {
-  height: 90%;
+  height: 81%;
   overflow: hidden;
 }
+
 .rightam {
   left: 71%;
 }
+
 .rightde {
   left: 59%;
 }
+
 .righten {
   left: 54.2%;
 }
+
 .rightfr {
   left: 53.6%;
 }
+
+.speech-container {
+  height: 9.5%;
+}
+
 .title {
   font-size: 2vw;
   font-family: 'gwibble', 'arial', sans-serif;
@@ -38,3 +57,22 @@ footer {
 #footer-logo {
   width: 1%;
 }
+
+/* Animation */
+.blink {
+  animation: blink-animation 1s steps(3, start) infinite;
+  -webkit-animation: blink-animation 1s steps(3, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
